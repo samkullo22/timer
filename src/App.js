@@ -41,7 +41,7 @@ export default class App extends Component {
         </div>
         <div className='timerSet'>
           <form>
-          <input type="text" pattern="\d*"  onChange={this.setTimer} placeholder="min"/>
+          <input type="text" inputmode="numeric" pattern="[0-9]*"  onChange={this.setTimer} placeholder="min"/>
           </form>
           <button onClick={() => {
             this.setTim()
