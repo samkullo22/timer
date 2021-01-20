@@ -55,7 +55,7 @@ body {
 
 .timerSet input {
   height: 50px;
-  width: 80px;
+  width: 100vw;
   border-radius: 18px;
   font-size: 25px;
   font-weight: 700;
@@ -114,7 +114,7 @@ button:focus {
 .c-rainbow__layer {
   --text-color: var(--color-foreground);
   counter-increment: rainbow;
-  font-size: 10vh;
+  font-size: 10vw;
   color: var(--text-color);
   text-shadow: -1px -1px 0 var(--color-black), 1px -1px 0 var(--color-black),
     -1px 1px 0 var(--color-black), 1px 1px 0 var(--color-black),
