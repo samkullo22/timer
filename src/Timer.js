@@ -1,0 +1,41 @@
+import React, { Component } from 'react'
+
+export default class Timer extends Component {
+    state = {
+        minutes : this.props.ammount,
+        seconds : 0
+    }
+    componentDidMount(){
+        this.myInterval = setInterval(()=> {
+            const {seconds, minutes} = this.state
+            if(seconds > 0) {
+                this.setState(({seconds}) => ({
+                    seconds: seconds -1
+                }))
+            }
+            if(seconds === 0){
+                if(minutes === 0) {
+                    clearInterval(this.myInterval)
+                }else {
+                    this.setState(({minutes}) => ({
+                        minutes: minutes -1,
+                        seconds: 59
+                    }))
+                }
+            }
+        },1000)
+    }
+    componentWillUnmount(){
+        clearInterval(this.myInterval)
+    }
+
+    render() {
+        const {minutes,seconds} = this.state
+        return (
+            <div className="timer">
+                <h1 className="timing">{minutes < 10 ? `0${minutes}` : minutes}:{seconds < 10 ? `0${seconds}` : seconds}</h1>
+            </div>
+        )
+    }
+}
+
