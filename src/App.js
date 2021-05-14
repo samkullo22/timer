@@ -1,58 +1,42 @@
 import './App.css';
 import Timer from './Timer'
-import React, { Component } from 'react'
+import React,  {useState} from 'react'
 
-export default class App extends Component {
-    state = {
-      time : 0,
-      text : '',
-    }
-    setTim = () => {
-      let time = this.state.text;
-      this.setState(() => {
-        return { time: time};
-      })
-    }
-    setTimer = (event) => {
-      let newVal = event.target.value;
-      this.setState(() => {
-        return {
-          text : newVal
-        }
-      })
-    }
-  render() {
-    return (
-      <div className="haupt">
-        {this.state.time > 0 ? (
-          <Timer  ammount={this.state.time} />
-        ) : (
-    <div className="main">
-      <div className="logo">
-        <ul className="c-rainbow">
-        <li className="c-rainbow__layer c-rainbow__layer--white">TIMER</li>
-        <li className="c-rainbow__layer c-rainbow__layer--orange">TIMER</li>
-        <li className="c-rainbow__layer c-rainbow__layer--red">TIMER</li>
-        <li className="c-rainbow__layer c-rainbow__layer--violet">TIMER</li>
-        <li className="c-rainbow__layer c-rainbow__layer--blue">TIMER</li>
-        <li className="c-rainbow__layer c-rainbow__layer--green">TIMER</li>
-        <li className="c-rainbow__layer c-rainbow__layer--yellow">TIMER</li>
-        </ul>
-        </div>
-        <div className='timerSet'>
-          <form>
-          <input type="tel"   onChange={this.setTimer} placeholder="min"/>
-          </form>
-          <button onClick={() => {
-            this.setTim()
-          }}>
-            start
-          </button>
-        </div>
+
+
+const App = () => {
+  const [val, setVal] = useState(0)
+  const [run, setRun] = useState(false)
+
+  return ( 
+    <div className="haupt">
+      {run ? (
+        <Timer  ammount={val}  run={run}/>
+      ) : (
+        <div className="main">
+          <div className="logo">
+            <ul className="c-rainbow">
+            <li className="c-rainbow__layer c-rainbow__layer--white">TIMER</li>
+            <li className="c-rainbow__layer c-rainbow__layer--orange">TIMER</li>
+            <li className="c-rainbow__layer c-rainbow__layer--red">TIMER</li>
+            <li className="c-rainbow__layer c-rainbow__layer--violet">TIMER</li>
+            <li className="c-rainbow__layer c-rainbow__layer--blue">TIMER</li>
+            <li className="c-rainbow__layer c-rainbow__layer--green">TIMER</li>
+            <li className="c-rainbow__layer c-rainbow__layer--yellow">TIMER</li>
+            </ul>
+          </div>
+          <div className='timerSet'>
+            <form onSubmit={(evt) => evt.preventDefault()}>
+              <input type="tel" onChange={e => setVal(e.target.value)} placeholder="min"/>
+            </form>
+            <button type="submit" onClick={()=> setRun(true)}>
+              start
+            </button>
+          </div>
       </div>
-        )}
+      )}
     </div>
-    )
-  }
+  );
 }
-
+ 
+export default App;

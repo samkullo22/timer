@@ -82,9 +82,26 @@ button:focus {
   font-weight: 600;
   color: #fcbc26;
   letter-spacing: 4px;
+  cursor: pointer;
 }
 .timer {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  align-items: center;
+}
+
+.breakBtn {
+  width: 35%;
+  height: 10%;
+  margin: 0 auto;
+  background: none;
+  border: none;
+  color: #d49c3d;
+  font-size: 40px;
+  cursor: pointer;
 }
 .timing {
   margin: 0 auto;
@@ -92,6 +109,18 @@ button:focus {
   font-size: 30vw;
   letter-spacing: 3px;
   color: #a1e600;
+  display: flex;
+  list-style: none;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  padding: 0 0;
+  margin: 0 0;
+}
+
+.timing li{
+  padding: 0 0px;
+  width: 75px;
 }
 
 /* LOGO */

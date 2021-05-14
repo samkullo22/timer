@@ -1,41 +1,37 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 
-export default class Timer extends Component {
-    state = {
-        minutes : this.props.ammount,
-        seconds : 0
-    }
-    componentDidMount(){
-        this.myInterval = setInterval(()=> {
-            const {seconds, minutes} = this.state
+export default function Timer({ammount}) {
+    const [minSec, setMinSec] = useState({minutes: ammount, seconds: 0});
+    useEffect(() => {
+        const interval = setInterval(()=> {
+            const {seconds, minutes} = minSec
             if(seconds > 0) {
-                this.setState(({seconds}) => ({
-                    seconds: seconds -1
-                }))
+                setMinSec({minutes,seconds: seconds -1})
             }
             if(seconds === 0){
-                if(minutes === 0) {
-                    clearInterval(this.myInterval)
-                }else {
-                    this.setState(({minutes}) => ({
-                        minutes: minutes -1,
-                        seconds: 59
-                    }))
+                if(minutes === 0){
+                    clearInterval()
+                }else{
+                    setMinSec({minutes: minutes - 1, seconds: 59})
                 }
             }
-        },1000)
-    }
-    componentWillUnmount(){
-        clearInterval(this.myInterval)
-    }
 
-    render() {
-        const {minutes,seconds} = this.state
-        return (
-            <div className="timer">
-                <h1 className="timing">{minutes < 10 ? `0${minutes}` : minutes}:{seconds < 10 ? `0${seconds}` : seconds}</h1>
-            </div>
-        )
-    }
+        }, 1000)
+        return () => {
+            clearInterval(interval);
+        }
+    }, [minSec])
+    const {minutes,seconds} = minSec;
+    return (
+        <div className="timer">
+            <ul className="timing">
+                <li>{minutes - 1 >= 10 ? `${minutes}`[0] : 0}</li>
+                <li>{minutes - 1 >= 10 ? `${minutes}`[1] : minutes}</li>
+                <li style={{margin: '0 0', padding: '0 0 ', width: '50px'}}>:</li>
+                <li>{seconds > 10 ? `${seconds}`[0] : 0}</li>
+                <li>{seconds > 10 ? `${seconds}`[1] : seconds}</li>
+            </ul>
+            {/* <button className="breakBtn" type="submit" onClick={() => console.log('sad')}>Breakpoint</button> */}
+        </div>
+    )
 }
-
