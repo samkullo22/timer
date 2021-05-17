@@ -25,11 +25,9 @@ export default function Timer({ammount}) {
     return (
         <div className="timer">
             <ul className="timing">
-                <li>{minutes - 1 >= 10 ? `${minutes}`[0] : 0}</li>
-                <li>{minutes - 1 >= 10 ? `${minutes}`[1] : minutes}</li>
-                <li style={{margin: '0 0', padding: '0 0 ', width: '50px'}}>:</li>
-                <li>{seconds > 10 ? `${seconds}`[0] : 0}</li>
-                <li>{seconds > 10 ? `${seconds}`[1] : seconds}</li>
+                <li className='seconds'>{minutes - 1 < 10 ? `0${minutes}` : minutes}</li>
+                <li className='seconds'>:</li>
+                <li className='seconds'>{seconds < 10 ? `0${seconds}` : seconds}</li>
             </ul>
             {/* <button className="breakBtn" type="submit" onClick={() => console.log('sad')}>Breakpoint</button> */}
         </div>

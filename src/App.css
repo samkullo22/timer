@@ -32,7 +32,7 @@
 }
 
 body {
-  width: 100%;
+  max-width: 100%;
   height: 100vh;
   background-color: #27233a;
 }
@@ -106,21 +106,134 @@ button:focus {
 .timing {
   margin: 0 auto;
   text-align: center;
-  font-size: 30vw;
+  font-size: 6.5rem;
   letter-spacing: 3px;
   color: #a1e600;
   display: flex;
   list-style: none;
   align-items: center;
-  justify-content: space-around;
   width: 100%;
   padding: 0 0;
   margin: 0 0;
+  justify-content: center;
 }
 
 .timing li{
-  padding: 0 0px;
-  width: 75px;
+  margin: 0 auto;
+  width: auto;
+}
+
+.settings{
+  width: 35px;
+  height:35px;
+  color: white;
+  position: absolute;
+  top: 30px;
+  right: 45px;
+  cursor: pointer;
+}
+
+.modal{
+  display:none;
+  width:280px;
+  height:300px;
+  position:absolute;
+  border-radius: 120px 20px 120px 20px / 60px 10px 60px 10px;
+  z-index: 2;
+}
+
+.background{
+  border-radius: 120px 20px 120px 20px / 60px 10px 60px 10px;
+  background-color: #020f33d2;
+  filter: blur(4px);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+.foreground{
+  border-radius: 120px 20px 120px 20px / 60px 10px 60px 10px;
+  backdrop-filter: blur(10px);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 15px 15px;
+}
+.foreground h1{
+  font-size: 24px;
+  color: #00fa85;
+}
+
+.bColorDiv{
+  display: flex;
+  margin: 0 5px;
+  width: 100%;
+  padding: 0 10px;
+  justify-content: space-between;
+
+}
+.bColorDiv h1{
+  font-family: Sans-Serif;
+  font-size: 18px;
+  color: #fcbc26;
+}
+.close{
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  color: white;
+  top: 20px;
+  right: 15px;
+  cursor: pointer;
+}
+
+/*for tablets */
+@media only screen and (min-width: 600px){
+  .timing{
+    font-size:11rem;
+    min-width: 600px;
+    max-width: 768px;
+  }
+  .timing li{
+    margin: 0 auto;
+    width: auto;
+}
+  .modal{
+    height: 450px;
+  }
+}
+
+@media only screen and (min-width: 769px) {
+  /* For desktop: */
+  .timing{
+    font-size: 12rem;
+    min-width: 850px;
+  }
+
+  .timing li{
+    margin: 0 1rem;
+    width: auto;
+  }
+  .modal{
+    height: 650px;
+    width: 700px;
+  }
+  .foreground{
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  .foreground h1{
+    font-size: 42px;
+  }
+  .bColorDiv h1{
+    font-size: 32px;
+  }
+  .colors_container{
+    width: 70%;
+    margin: 0 auto;
+  }
 }
 
 /* LOGO */
